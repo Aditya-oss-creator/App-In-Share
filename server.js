@@ -30,11 +30,6 @@ app.use("/api/files", require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
 
-app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "public", "index.html"))
-);
-
-
 app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);
 });
