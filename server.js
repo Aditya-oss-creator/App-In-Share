@@ -20,8 +20,7 @@ connectDB();
 
 app.use(express.json());
 
-// Template Engine & Static Files
-app.use(express.static("public"));
+// Template Engine
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
@@ -29,6 +28,16 @@ app.set("view engine", "ejs");
 app.use("/api/files", require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
+
+
+// Serve static assests in production
+app.use("/", express.static("public/frontend"));
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "public", "frontend", "index.html"))
+);
+
+
 
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}`);
