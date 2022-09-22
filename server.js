@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const path = require("path");
 const cors = require('cors')
 
@@ -30,6 +30,6 @@ app.use("/api/files", require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
 
-app.listen(PORT, () => {
-  console.log(`Listening on port http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Listening on port http://localhost:${port}`);
 });
