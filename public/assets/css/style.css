@@ -11,6 +11,10 @@ body {
   background: var(--main-bg-color);
   height: 98vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
 }
 
 .logo {
@@ -281,23 +285,6 @@ body,
   }
 }
 
-
-:root {
-    --main-bg-color: #edf5fe;
-    --light-blue: #03a9f4;
-    --dark-blue: #028bca;
-  }
-
-  body {
-    font-family: system-ui;
-    background: var(--main-bg-color);
-    height: 98vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-  }
 
 section.download {
     background: #fff;

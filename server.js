@@ -13,8 +13,6 @@ const corsOptions = {
 
 // static files & Middleware
 app.use(cors(corsOptions))
-app.use(express.static("public"));
-
 
 // Database
 const connectDB = require("./config/db");
@@ -22,7 +20,8 @@ connectDB();
 
 app.use(express.json());
 
-// Template Engine
+// Template Engine & Static Files
+app.use(express.static("public"));
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
@@ -30,6 +29,11 @@ app.set("view engine", "ejs");
 app.use("/api/files", require("./routes/files"));
 app.use("/files", require("./routes/show"));
 app.use("/files/download", require("./routes/download"));
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "public", "index.html"))
+);
+
 
 app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);

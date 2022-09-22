@@ -7,17 +7,12 @@ const { v4: uuidv4 } = require("uuid");
 let storage = multer.diskStorage({
   destination: (req, file, callback) => callback(null, "uploads/"),
   filename: (req, file, callback) => {
-    const uniqueName = `${Date.now()}-${Math.round(
-      Math.random() * 1e9
-    )}${path.extname(file.originalname)}`;
+    const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1e9)}${path.extname(file.originalname)}`;
     callback(null, uniqueName);
   },
 });
 
-let upload = multer({
-  storage: storage,
-  limit: { fileSize: 1000000 * 100 },
-}).single("myfile");
+let upload = multer({storage: storage,limit: { fileSize: 1000000 * 100 }}).single("myfile");
 
 router.post("/", (req, res) => {
   // Store File
@@ -40,10 +35,9 @@ router.post("/", (req, res) => {
 });
 
 router.post("/send", async (req, res) => {
-  const { uuid, emailTo, emailFrom } = req.body;
-  console.log(req.body);
+  const { uuid, emailTo, emailFrom ,expiresIn} = req.body;
   if (!uuid || !emailTo || !emailFrom) {
-    return res.status(422).send({ error: "All fields are required" });
+    return res.status(422).send({ error: "All fields are required except expiry." });
   }
 
   // Get Data from database
@@ -76,8 +70,8 @@ router.post("/send", async (req, res) => {
       .then(() => {
         return res.json({ success: true });
       })
-      .catch((err) => {
-        return res.status(500).json({ error: "Error in email sending." });
+      .catch(err => {
+        return res.status(500).json({ error: 'Error in email sending.' });
       });
   } catch (err) {
     return res.status(500).send({ error: "Something went wrong." });
