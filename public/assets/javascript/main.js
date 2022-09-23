@@ -15,8 +15,9 @@ const emailForm = document.querySelector("#emailForm");
 
 const toast = document.querySelector(".toast");
 
+// const baseURL = "https://innshare.herokuapp.com";
 // const baseURL = "https://inshare-file-shareing-app.herokuapp.com";
-const baseURL = "https://innshare.herokuapp.com/";
+const baseURL = "https://app-in-share.herokuapp.com";
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 
@@ -28,7 +29,6 @@ browseBtn.addEventListener("click", () => {
 
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
-  //   console.log("dropped", e.dataTransfer.files[0].name);
   const files = e.dataTransfer.files;
   if (files.length === 1) {
     if (files[0].size < maxAllowedSize) {
