@@ -34,6 +34,7 @@ body,
   align-items: center;
   justify-content: center;
 }
+
 .upload-container,
 .drop-zone {
   flex-direction: column;
@@ -103,6 +104,10 @@ body,
 #browseBtn {
   color: #2196f3;
   cursor: pointer;
+}
+
+#fileInput{
+  display: none;
 }
 
 /* uploading progress styles */
