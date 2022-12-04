@@ -17,7 +17,7 @@ const toast = document.querySelector('.toast');
 
 // const baseURL = "https://innshare.herokuapp.com";
 // const baseURL = "https://app-in-share.herokuapp.com";
-const baseURL = 'https://app-in-share.netlify.app';
+const baseURL = 'https://inshare-8iuq.onrender.com';
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 
