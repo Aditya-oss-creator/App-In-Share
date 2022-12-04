@@ -15,8 +15,14 @@ const emailForm = document.querySelector('#emailForm');
 
 const toast = document.querySelector('.toast');
 
+<<<<<<< HEAD
 // const baseURL = "https://app-in-share.herokuapp.com";
 const baseURL = 'https://inshare-uoed.onrender.com/';
+=======
+// const baseURL = "https://innshare.herokuapp.com";
+// const baseURL = "https://app-in-share.herokuapp.com";
+const baseURL = "https://inshare-uoed.onrender.com";
+>>>>>>> 4448688705dd7d5b3751289e0f0f45982762b03e
 const uploadURL = `${baseURL}/api/files`;
 const emailURL = `${baseURL}/api/files/send`;
 
