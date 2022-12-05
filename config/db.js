@@ -1,12 +1,14 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
+require('dotenv').config();
+const mongoose = require('mongoose');
 function connectDB() {
   // Database connection 🥳
   mongoose.connect(process.env.MONGO_CONNECTION_URL);
 
   mongoose.connection
-  .once('open', () => console.log("Database connected 🥳🥳🥳🥳"))
-  .on('error',  (err) => {console.log(err)});
+    .once('open', () => console.log('Database connected 🥳🥳🥳🥳'))
+    .on('error', (err) => {
+      console.log(err);
+    });
 }
 
 module.exports = connectDB;
